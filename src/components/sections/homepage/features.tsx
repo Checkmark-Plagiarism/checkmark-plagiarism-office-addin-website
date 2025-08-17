@@ -50,7 +50,7 @@ const Features = () => {
             Why Choose Our Office Add-in?
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience the power of Checkmark's plagiarism detection directly within
+            Experience the power of Checkmark&apos;s plagiarism detection directly within
             Microsoft Word, the environment where your students are already working.
           </p>
         </div>

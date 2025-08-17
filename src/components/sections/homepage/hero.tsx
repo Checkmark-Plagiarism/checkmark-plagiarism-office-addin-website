@@ -19,7 +19,7 @@ const Hero = () => {
 
             <p className="text-xl text-hero-fg/90 mb-8 leading-relaxed">
               Seamlessly integrate advanced plagiarism detection directly into Microsoft Word.
-              Analyze typing behavior and revision history with the power of Checkmark's
+              Analyze typing behavior and revision history with the power of Checkmark&apos;s
               teacher-designed technology.
             </p>
 
