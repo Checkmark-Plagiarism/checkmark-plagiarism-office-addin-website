@@ -1,5 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/ui/card";
-import addonInterface from "@/../public/images/interface.jpg";
+import Image from "next/image";
+
+const addonInterface = "/images/interface.jpg";
 
 const HowItWorks = () => {
   const steps = [
@@ -68,10 +70,12 @@ const HowItWorks = () => {
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-0">
-                <img
+                <Image
                   src={addonInterface}
                   alt="Checkmark Plagiarism Add-in Interface in Microsoft Word"
                   className="w-full h-auto object-cover"
+                  height={"200"}
+                  width={"200"}
                 />
               </CardContent>
             </Card>

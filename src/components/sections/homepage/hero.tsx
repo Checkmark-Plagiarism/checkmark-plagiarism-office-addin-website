@@ -1,6 +1,8 @@
 import { Button } from "@/components/common/ui/button";
 import { Download, ChevronRight } from "lucide-react";
-import heroImage from "@/../public/images/hero.jpg";
+import Image from "next/image";
+
+const heroImage = "/images/hero.jpg";
 
 const Hero = () => {
   return (
@@ -36,10 +38,12 @@ const Hero = () => {
 
           <div className="relative">
             <div className="relative overflow-hidden rounded-2xl shadow-elegant">
-              <img
+              <Image
                 src={heroImage}
                 alt="Checkmark Plagiarism Office Add-in Interface"
                 className="w-full h-auto object-cover"
+                height={"200"}
+                width={"200"}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-hero-bg/20 to-transparent"></div>
             </div>
