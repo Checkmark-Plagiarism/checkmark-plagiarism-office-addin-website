@@ -1,26 +1,118 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@config "../../tailwind.config.ts";
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* /* Checkmark Plagiarism Design System */
+/* @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'); */
 
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Core Brand Colors */
+    --background: 0 0% 100%;
+    --foreground: 215 28% 17%;
+
+    /* Checkmark Blue Brand */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 221 83% 35%;
+
+    /* Navy Blue for Hero */
+    --hero-bg: 221 39% 25%;
+    --hero-fg: 0 0% 100%;
+
+    /* Clean Grays */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 215 25% 27%;
+
+    --muted: 220 13% 91%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 204 94% 94%;
+    --accent-foreground: 221 83% 53%;
+
+    /* Card and UI */
+    --card: 0 0% 100%;
+    --card-foreground: 215 28% 17%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    /* Success and Error */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(221 39% 25%) 0%, hsl(221 83% 35%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(221 83% 53%) 0%, hsl(204 94% 60%) 100%);
+
+    /* Shadows */
+    --shadow-soft: 0 4px 6px -1px hsl(221 39% 25% / 0.1), 0 2px 4px -1px hsl(221 39% 25% / 0.06);
+    --shadow-elegant: 0 10px 15px -3px hsl(221 39% 25% / 0.1), 0 4px 6px -2px hsl(221 39% 25% / 0.05);
+    --shadow-card: 0 1px 3px 0 hsl(221 39% 25% / 0.1), 0 1px 2px 0 hsl(221 39% 25% / 0.06);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 215 28% 17%;
+    --foreground: 0 0% 100%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+    --primary-dark: 221 83% 35%;
+
+    --hero-bg: 215 28% 17%;
+    --hero-fg: 0 0% 100%;
+
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 220 14% 96%;
+
+    --muted: 215 25% 27%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 221 39% 25%;
+    --accent-foreground: 221 83% 53%;
+
+    --card: 215 25% 27%;
+    --card-foreground: 0 0% 100%;
+
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 221 83% 53%;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight;
+  }
 }
