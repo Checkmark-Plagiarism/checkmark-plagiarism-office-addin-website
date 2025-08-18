@@ -2,7 +2,7 @@ import { Button } from "@/components/common/ui/button";
 import { Download, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
-const heroImage = "/images/hero_02.jpg";
+const heroImage = "/images/hero_02.png";
 
 const Hero = () => {
   return (
@@ -42,8 +42,8 @@ const Hero = () => {
                 src={heroImage}
                 alt="Checkmark Plagiarism Office Add-in Interface"
                 className="w-full h-auto object-cover"
-                height={"200"}
-                width={"200"}
+                height="200"
+                width="200"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-hero-bg/20 to-transparent"></div>
             </div>
