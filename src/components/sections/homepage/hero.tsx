@@ -2,7 +2,7 @@ import { Button } from "@/components/common/ui/button";
 import { Download, ChevronRight } from "lucide-react";
 import Image from "next/image";
 
-const heroImage = "/images/hero.jpg";
+const heroImage = "/images/hero_02.jpg";
 
 const Hero = () => {
   return (

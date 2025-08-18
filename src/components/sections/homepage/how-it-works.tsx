@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/ui/card";
 import Image from "next/image";
 
-const addonInterface = "/images/interface.jpg";
+const addonInterface = "/images/interface_02.jpg";
 
 const HowItWorks = () => {
   const steps = [
