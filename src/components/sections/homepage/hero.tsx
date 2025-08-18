@@ -41,11 +41,12 @@ const Hero = () => {
               <Image
                 src={heroImage}
                 alt="Checkmark Plagiarism Office Add-in Interface"
-                className="w-full h-auto object-cover"
+                className="w-full h-auto"
                 height="200"
                 width="200"
+                quality={100}
+                unoptimized
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-hero-bg/20 to-transparent"></div>
             </div>
           </div>
         </div>

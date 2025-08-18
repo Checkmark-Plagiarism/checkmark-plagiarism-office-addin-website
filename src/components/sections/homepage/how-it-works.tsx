@@ -28,7 +28,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-20 bg-secondary/30">
+    <section id="how-it-works" className="py-20 bg-secondary/30 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
@@ -40,7 +40,7 @@ const HowItWorks = () => {
           </p>
         </div>
 
-        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center mx-auto max-w-3xl">
           <div className="mb-12 lg:mb-0">
             <div className="space-y-8">
               {steps.map((step, index) => (
@@ -62,7 +62,7 @@ const HowItWorks = () => {
           </div>
 
           <div className="relative">
-            <Card className="overflow-hidden shadow-elegant">
+            <Card className="w-fit overflow-hidden shadow-elegant">
               <CardHeader className="bg-primary text-primary-foreground">
                 <CardTitle>Checkmark Add-in Interface</CardTitle>
                 <CardDescription className="text-primary-foreground/80">
@@ -73,9 +73,9 @@ const HowItWorks = () => {
                 <Image
                   src={addonInterface}
                   alt="Checkmark Plagiarism Add-in Interface in Microsoft Word"
-                  className="w-full h-auto object-cover"
-                  height={"200"}
-                  width={"200"}
+                  className="w-fit h-auto mx-auto"
+                  height={"150"}
+                  width={"150"}
                 />
               </CardContent>
             </Card>
