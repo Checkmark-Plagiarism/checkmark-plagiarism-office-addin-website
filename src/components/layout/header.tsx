@@ -1,5 +1,6 @@
 import { Button } from "@/components/common/ui/button";
 import { CheckCircle2 } from "lucide-react";
+import Image from "next/image";
 
 const Header = () => {
   return (
@@ -8,7 +9,12 @@ const Header = () => {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <CheckCircle2 className="w-5 h-5 text-primary-foreground" />
+              <Image
+                src="/images/checkmark_plagiarism_logo.png"
+                alt="Checkmark Plagiarism Logo"
+                width="100"
+                height="100"
+              />
             </div>
             <span className="text-xl font-semibold text-foreground">
               Checkmark Plagiarism
