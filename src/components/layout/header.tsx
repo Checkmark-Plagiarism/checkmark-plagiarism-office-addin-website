@@ -7,7 +7,7 @@ const Header = () => {
     <header className="bg-white shadow-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex items-center space-x-3">
+          <a href="/" className="flex items-center space-x-3">
             <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
               <Image
                 src="/images/checkmark_plagiarism_logo.png"
@@ -19,7 +19,7 @@ const Header = () => {
             <span className="text-xl font-semibold text-foreground">
               Checkmark Plagiarism
             </span>
-          </div>
+          </a>
 
           <nav className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">
