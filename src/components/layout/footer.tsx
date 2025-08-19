@@ -1,4 +1,5 @@
 import { CheckCircle2 } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -53,14 +54,14 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="https://www.checkmarkplagiarism.com" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
+                <Link href="https://www.checkmarkplagiarism.com" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
                   Main Website
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/privacy-policy" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
+                <Link href="/privacy-policy" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
                 <a href="#" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
