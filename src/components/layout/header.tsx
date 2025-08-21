@@ -29,9 +29,9 @@ const Header = () => {
             <a href="#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">
               How It Works
             </a>
-            <a href="#support" className="text-muted-foreground hover:text-primary transition-colors">
+            <Link href="/support-document" className="text-muted-foreground hover:text-primary transition-colors">
               Support
-            </a>
+            </Link>
             <Button variant="cta" size="sm">
               Get Add-in
             </Button>

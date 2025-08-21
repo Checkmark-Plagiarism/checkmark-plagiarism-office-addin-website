@@ -20,7 +20,7 @@ const Footer = () => {
               Bringing advanced academic integrity tools directly to Microsoft Office.
             </p>
             <p className="text-sm text-hero-fg/60">
-              © 2024 Checkmark Plagiarism. All rights reserved.
+              © 2025 Checkmark Plagiarism. All rights reserved.
             </p>
           </div>
 
