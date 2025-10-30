@@ -13,70 +13,69 @@
     <!-- Office JavaScript API -->
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
 
-    <!-- Diff scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+    <!-- Local styles (Tailwind will be bundled) -->
+    <link rel="stylesheet" href="taskpane.css"/>
 
-    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
-    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
-
-    <!-- Tailwind CSS via CDN (just in case the above doesn’t work) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <script src="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.js"></script>
+    <!-- JavaScript will be bundled by webpack -->
 </head>
 
 <body class="bg-blue-100">
-  <div class="p-4 flex flex-col gap-4">
+  <div id="main-content" class="p-4 flex flex-col gap-4">
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 p-4 bg-gradient-to-b from-blue-500 to-blue-400 rounded-lg shadow-sm border border-gray-200">
-      <img src="https://app.checkmateplagiarism.com/logo-52x52.png" alt="Checkmark Logo" class="w-12 h-12" />
-      <h2 class="text-2xl font-semibold text-gray-800 text-center sm:text-left">Checkmark Plagiarism</h2>
+    <div class="flex flex-row items-center gap-2 p-2 bg-gradient-to-b from-blue-500 to-blue-400 rounded-lg shadow-sm border border-gray-200">
+      <img src="/assets/logo-52x52.png" alt="Checkmark Logo" class="w-8 h-8" />
+      <h2 class="text-lg font-semibold text-white">Checkmark Plagiarism</h2>
     </div>
 
-    <!-- Half-Circle Speedometer Container -->
-    <!-- Speedometer -->
-    <div class="w-full max-w-sm mx-auto bg-white p-6 rounded-lg shadow-sm border border-gray-200 flex flex-col items-center">
-      <span class="text-md font-semibold text-gray-600 mb-4">Words Per Minute</span>
-
-      <!-- SVG Speedometer -->
-      <div class="relative w-48 h-32">
-        <svg viewBox="0 0 200 100" class="w-full h-full">
-          <!-- Arc Segments (Each 60 degrees) -->
-          <path d="M 10 100 A 90 90 0 0 1 70 10" stroke="#34D399" stroke-width="15" fill="none" />
-          <path d="M 70 10 A 90 90 0 0 1 130 10" stroke="#FBBF24" stroke-width="15" fill="none" />
-          <path d="M 130 10 A 90 90 0 0 1 190 100" stroke="#F87171" stroke-width="15" fill="none" />
-        </svg>
-
-        <!-- Needle -->
-        <div id="needle" class="absolute w-1 h-20 bg-blue-600 origin-bottom left-1/2 bottom-0 transform -translate-x-1/2 rotate-[-90deg] transition-transform duration-300 ease-out z-30"></div>
-
-        <!-- Center Dot -->
-        <div class="absolute w-4 h-4 bg-blue-800 rounded-full left-1/2 bottom-0 transform -translate-x-1/2 translate-y-1/2 z-40"></div>
-      </div>
-
-      <!-- WPM Counter -->
-      <span id="wpmCounter" class="mt-4 text-2xl font-bold text-blue-600">0</span>
-    </div>
-
-
-    <!-- Total Words Written -->
+    <!-- Total Words -->
     <div class="p-3 bg-white rounded-lg flex items-center justify-between shadow-sm w-full max-w-sm mx-auto border border-gray-200">
-      <span class="text-md font-semibold text-gray-600">Word(s)</span>
+      <span class="text-md font-semibold text-gray-600">Words</span>
       <span id="wordCountDisplay" class="text-lg font-bold text-blue-600">0</span>
     </div>
 
-
-    <!-- Total Sentences Written -->
-    <div class="p-3 bg-white rounded-lg flex items-center justify-between shadow-sm w-full max-w-sm mx-auto border border-gray-200">
-      <span class="text-md font-semibold text-gray-600">Sentence(s)</span>
-      <span id="sentenceCounter" class="text-lg font-bold text-blue-600">0</span>
+    <!-- Total Characters -->
+    <div class="p-3 bg-white rounded-lg shadow-sm w-full max-w-sm mx-auto border border-gray-200">
+      <div class="flex items-center justify-between">
+        <span class="text-md font-semibold text-gray-600">Characters</span>
+        <span id="characterCount" class="text-lg font-bold text-blue-600">0</span>
+      </div>
+      <div class="text-xs text-gray-500 mt-1">
+        Without spaces: <span id="characterCountNoSpaces" class="font-semibold">0</span>
+      </div>
     </div>
 
-
-    <!-- Total Paragraphs Written -->
+    <!-- Total Paragraphs -->
     <div class="p-3 bg-white rounded-lg flex items-center justify-between shadow-sm w-full max-w-sm mx-auto border border-gray-200">
-      <span class="text-md font-semibold text-gray-600">Paragraph(s)</span>
+      <span class="text-md font-semibold text-gray-600">Paragraphs</span>
       <span id="paragraphCounter" class="text-lg font-bold text-blue-600">0</span>
+    </div>
+
+    <!-- Spoken Length -->
+    <div class="p-3 bg-white rounded-lg flex items-center justify-between shadow-sm w-full max-w-sm mx-auto border border-gray-200">
+      <span class="text-md font-semibold text-gray-600">Spoken Length</span>
+      <span id="spokenLength" class="text-lg font-bold text-blue-600">0s</span>
+    </div>
+
+    <!-- Session Editing Time -->
+    <div class="p-3 bg-white rounded-lg shadow-sm w-full max-w-sm mx-auto border border-gray-200">
+      <div class="flex items-center justify-between">
+        <span class="text-md font-semibold text-gray-600">Session Editing Time</span>
+        <span id="activeTime" class="text-lg font-bold text-blue-600">0m</span>
+      </div>
+      <div class="text-xs text-gray-500 mt-1">
+        Overall: <span id="activeTimeSubtext" class="font-semibold">0m</span>
+      </div>
+    </div>
+
+    <!-- Flesch-Kincaid Reading Ease Score -->
+    <div class="p-3 bg-white rounded-lg shadow-sm w-full max-w-sm mx-auto border border-gray-200">
+      <div class="flex items-center justify-between">
+        <span class="text-md font-semibold text-gray-600">Readability Score</span>
+        <span id="fleschKincaid" class="text-lg font-bold text-blue-600">--</span>
+      </div>
+      <div class="text-xs text-gray-500 mt-1">
+        <span id="fleschKincaidDesc" class="italic">Need 100 words</span>
+      </div>
     </div>
 
 
@@ -90,44 +89,23 @@
       </ul>
     </div> -->
 
+  </div>
 
-    <!-- Close Panel Suggestion -->
-    <div class="bg-blue-50 border border-blue-200 text-blue-800 text-sm rounded-md p-4 mx-auto max-w-sm flex items-start space-x-3">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-1 flex-shrink-0 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
-        <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8 3a1 1 0 100-2 1 1 0 000 2zm-.75-7a.75.75 0 011.5 0v4a.75.75 0 01-1.5 0V6z" clip-rule="evenodd" />
-      </svg>
-      <p>
-        A subscription is required to opt-in to the Plagiarism Checker and AI Detection.<br />
-        You can safely close this panel while writing. <br />
-        All data is saved directly to this document. 🔒
-      </p>
+  <!-- Info Panel - Always above footer at bottom -->
+  <div class="p-4">
+    <div class="p-3 bg-gray-100 rounded-lg shadow-sm w-full max-w-sm mx-auto border border-gray-300">
+      <div class="flex items-start space-x-3">
+        <span class="text-xl flex-shrink-0">🔒</span>
+        <p class="text-xs text-gray-700">
+          You can safely close this panel while writing.
+          All data is saved directly to this document and offline.
+        </p>
+      </div>
     </div>
+  </div>
 
-    <div class="mt-auto text-center text-sm text-gray-500 py-2">
-      Checkmark Plagiarism © 2025
-    </div>
-
+  <!-- Footer - Always at bottom -->
+  <div class="text-center text-sm text-gray-500 py-3 bg-blue-100">
+    Checkmark Plagiarism © 2025
   </div>
 </body>
-<script>
-  const MAX_WPM = 350;
-
-  function updateSpeedometer(wpm) {
-    const needle = document.getElementById("needle");
-    const display = document.getElementById("wpmCounter");
-
-    const clamped = Math.min(MAX_WPM, Math.max(0, wpm));
-
-    // Map WPM to angle from -90deg (left) to 90deg (right)
-    const angle = (clamped / MAX_WPM) * 180 - 90;
-
-    needle.style.transform = `translateX(-50%) rotate(${angle}deg)`;
-    display.innerText = clamped;
-  }
-
-  // Demo: update randomly
-  setInterval(() => {
-    const currentWPM = parseInt(document.getElementById("wpmCounter").innerText, 10) || 0;
-    updateSpeedometer(currentWPM);
-  }, 2000);
-</script>
