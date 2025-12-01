@@ -38,7 +38,7 @@
             <Description resid="GetStarted.Description"/>
             <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
           </GetStarted>
-          <FunctionFile resid="Commands.Url"/>
+          <FunctionFile resid="Taskpane.Url"/>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
             <OfficeTab id="TabHome">
               <Group id="CommandsGroup">
@@ -71,7 +71,7 @@
             <LaunchEvents>
               <LaunchEvent Type="OnDocumentOpened" FunctionName="onDocumentOpened" />
             </LaunchEvents>
-            <SourceLocation resid="Commands.Url"/>
+            <SourceLocation resid="Taskpane.Url"/>
           </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
