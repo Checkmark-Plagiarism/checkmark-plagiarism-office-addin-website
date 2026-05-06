@@ -4,7 +4,7 @@
        Production / AppSource Id: 410c6ad1-80fb-47ad-888e-7bb2c98b7f35
        Restore the production Id before resubmitting to AppSource. -->
   <Id>08176fd2-4a1c-4c37-87ce-b9c418439597</Id>
-  <Version>1.0.0.6</Version>
+  <Version>1.0.0.7</Version>
   <ProviderName>Checkmark Plagiarism</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Checkmark Plagiarism (TEST)"/>
@@ -105,7 +105,7 @@
                  LaunchEvent ExtensionPoint to match a Runtime resid declared here.
                  Without this, Word can't locate the runtime to host the handler and
                  the event is silently dropped. -->
-            <Runtime resid="LaunchEvent.Url" lifetime="short">
+            <Runtime resid="LaunchEvent.Url">
               <Override type="javascript" resid="LaunchEvent.Js"/>
             </Runtime>
           </Runtimes>
