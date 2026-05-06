@@ -4,7 +4,7 @@
        Production / AppSource Id: 410c6ad1-80fb-47ad-888e-7bb2c98b7f35
        Restore the production Id before resubmitting to AppSource. -->
   <Id>08176fd2-4a1c-4c37-87ce-b9c418439597</Id>
-  <Version>1.0.0.5</Version>
+  <Version>1.0.0.6</Version>
   <ProviderName>Checkmark Plagiarism</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Checkmark Plagiarism (TEST)"/>
@@ -79,8 +79,8 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/commands/commands.html?v=3"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.html?v=3"/>
+        <bt:Url id="Commands.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/commands/commands.html?v=4"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.html?v=4"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Start Checkmark Plagiarism before you begin writing!"/>
@@ -100,6 +100,14 @@
         <Host xsi:type="Document">
           <Runtimes>
             <Runtime resid="Taskpane.Url" lifetime="long" />
+            <!-- Dedicated short-lived runtime for the OnDocumentOpened LaunchEvent.
+                 Microsoft's docs explicitly require the SourceLocation resid in the
+                 LaunchEvent ExtensionPoint to match a Runtime resid declared here.
+                 Without this, Word can't locate the runtime to host the handler and
+                 the event is silently dropped. -->
+            <Runtime resid="LaunchEvent.Url" lifetime="short">
+              <Override type="javascript" resid="LaunchEvent.Js"/>
+            </Runtime>
           </Runtimes>
           <DesktopFormFactor>
             <GetStarted>
@@ -156,9 +164,10 @@
         </bt:Images>
         <bt:Urls>
           <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-          <bt:Url id="Commands.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/commands/commands.html?v=3"/>
-          <bt:Url id="Taskpane.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.html?v=3"/>
-          <bt:Url id="LaunchEvent.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/launch/launch.html?v=3"/>
+          <bt:Url id="Commands.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/commands/commands.html?v=4"/>
+          <bt:Url id="Taskpane.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.html?v=4"/>
+          <bt:Url id="LaunchEvent.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/launch/launch.html?v=4"/>
+          <bt:Url id="LaunchEvent.Js"  DefaultValue="https://office.checkmarkplagiarism.com/add-in/launch/launch.js?v=4"/>
         </bt:Urls>
         <bt:ShortStrings>
           <bt:String id="GetStarted.Title" DefaultValue="Start Checkmark Plagiarism before you begin writing!"/>
