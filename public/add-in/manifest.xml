@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
-  <!-- TEST Id for central-deployment testing only.
-       Production / AppSource Id: 410c6ad1-80fb-47ad-888e-7bb2c98b7f35
-       Restore the production Id before resubmitting to AppSource. -->
-  <Id>08176fd2-4a1c-4c37-87ce-b9c418439597</Id>
-  <Version>1.0.0.9</Version>
+  <!-- Production manifest for AppSource (WA200009581).
+       Verified working: V1_0-only LaunchEvent matches Microsoft's canonical
+       word-add-label-on-open sample. Auto-launch via OnDocumentOpened on
+       Word web confirmed in tenant testing with Plagiarism V1 (Id 8c0e425b)
+       on May 6 2026 — taskpane auto-opens on doc open with metrics live. -->
+  <Id>410c6ad1-80fb-47ad-888e-7bb2c98b7f35</Id>
+  <Version>1.0.0.10</Version>
   <ProviderName>Checkmark Plagiarism</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
-  <DisplayName DefaultValue="Checkmark Plagiarism (TEST)"/>
-  <Description DefaultValue="Checkmark Plagiarism — test build for LaunchEvent fix"/>
-  <IconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png?v=2"/>
-  <HighResolutionIconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-64.png?v=2"/>
+  <DisplayName DefaultValue="Checkmark Plagiarism"/>
+  <Description DefaultValue="Checkmark Plagiarism"/>
+  <IconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png?v=3"/>
+  <HighResolutionIconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-64.png?v=3"/>
   <SupportUrl DefaultValue="https://office.checkmarkplagiarism.com/help"/>
   <AppDomains>
     <AppDomain>https://www.checkmarkplagiarism.com</AppDomain>
@@ -87,9 +89,9 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-16.png?v=2"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png?v=2"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-80.png?v=2"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-16.png?v=3"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png?v=3"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-80.png?v=3"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
