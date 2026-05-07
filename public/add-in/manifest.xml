@@ -4,13 +4,13 @@
        Production / AppSource Id: 410c6ad1-80fb-47ad-888e-7bb2c98b7f35
        Restore the production Id before resubmitting to AppSource. -->
   <Id>08176fd2-4a1c-4c37-87ce-b9c418439597</Id>
-  <Version>1.0.0.8</Version>
+  <Version>1.0.0.9</Version>
   <ProviderName>Checkmark Plagiarism</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Checkmark Plagiarism (TEST)"/>
   <Description DefaultValue="Checkmark Plagiarism — test build for LaunchEvent fix"/>
-  <IconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png"/>
-  <HighResolutionIconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-64.png"/>
+  <IconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png?v=2"/>
+  <HighResolutionIconUrl DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-64.png?v=2"/>
   <SupportUrl DefaultValue="https://office.checkmarkplagiarism.com/help"/>
   <AppDomains>
     <AppDomain>https://www.checkmarkplagiarism.com</AppDomain>
@@ -87,9 +87,9 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png"/>
-        <bt:Image id="Icon.80x80" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-80.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-16.png?v=2"/>
+        <bt:Image id="Icon.32x32" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png?v=2"/>
+        <bt:Image id="Icon.80x80" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-80.png?v=2"/>
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
