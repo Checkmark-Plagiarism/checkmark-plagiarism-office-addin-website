@@ -4,7 +4,7 @@
        Production / AppSource Id: 410c6ad1-80fb-47ad-888e-7bb2c98b7f35
        Restore the production Id before resubmitting to AppSource. -->
   <Id>08176fd2-4a1c-4c37-87ce-b9c418439597</Id>
-  <Version>1.0.0.7</Version>
+  <Version>1.0.0.8</Version>
   <ProviderName>Checkmark Plagiarism</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Checkmark Plagiarism (TEST)"/>
@@ -32,6 +32,14 @@
       <Host xsi:type="Document">
         <Runtimes>
           <Runtime resid="Taskpane.Url" lifetime="long" />
+          <!-- Dedicated runtime for the OnDocumentOpened LaunchEvent.
+               Per Microsoft's canonical sample (word-add-label-on-open),
+               LaunchEvent's <SourceLocation> resid must match a <Runtime resid>
+               declared here, with an <Override type="javascript"> pointing at
+               the JS handler file. No lifetime attribute — defaults work. -->
+          <Runtime resid="LaunchEvent.Url">
+            <Override type="javascript" resid="LaunchEvent.Js"/>
+          </Runtime>
         </Runtimes>
         <DesktopFormFactor>
           <GetStarted>
@@ -68,6 +76,12 @@
               </Group>
             </OfficeTab>
           </ExtensionPoint>
+          <ExtensionPoint xsi:type="LaunchEvent">
+            <LaunchEvents>
+              <LaunchEvent Type="OnDocumentOpened" FunctionName="onDocumentOpened" />
+            </LaunchEvents>
+            <SourceLocation resid="LaunchEvent.Url"/>
+          </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
     </Hosts>
@@ -79,8 +93,10 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Commands.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/commands/commands.html?v=4"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.html?v=4"/>
+        <bt:Url id="Commands.Url"     DefaultValue="https://office.checkmarkplagiarism.com/add-in/commands/commands.html?v=4"/>
+        <bt:Url id="Taskpane.Url"     DefaultValue="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.html?v=4"/>
+        <bt:Url id="LaunchEvent.Url"  DefaultValue="https://office.checkmarkplagiarism.com/add-in/launch/launch.html?v=4"/>
+        <bt:Url id="LaunchEvent.Js"   DefaultValue="https://office.checkmarkplagiarism.com/add-in/launch/launch.js?v=4"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Start Checkmark Plagiarism before you begin writing!"/>
@@ -92,93 +108,5 @@
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
       </bt:LongStrings>
     </Resources>
-    <!-- Nested V1_1 for Office versions that support LaunchEvent.
-         Older Office versions ignore this block and use the V1_0 above
-         (so they get the ribbon button only — no "add-in could not be started" popup). -->
-    <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides/1.1" xsi:type="VersionOverridesV1_1">
-      <Hosts>
-        <Host xsi:type="Document">
-          <Runtimes>
-            <Runtime resid="Taskpane.Url" lifetime="long" />
-            <!-- Dedicated short-lived runtime for the OnDocumentOpened LaunchEvent.
-                 Microsoft's docs explicitly require the SourceLocation resid in the
-                 LaunchEvent ExtensionPoint to match a Runtime resid declared here.
-                 Without this, Word can't locate the runtime to host the handler and
-                 the event is silently dropped. -->
-            <Runtime resid="LaunchEvent.Url">
-              <Override type="javascript" resid="LaunchEvent.Js"/>
-            </Runtime>
-          </Runtimes>
-          <DesktopFormFactor>
-            <GetStarted>
-              <Title resid="GetStarted.Title"/>
-              <Description resid="GetStarted.Description"/>
-              <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
-            </GetStarted>
-            <FunctionFile resid="Taskpane.Url"/>
-            <ExtensionPoint xsi:type="PrimaryCommandSurface">
-              <OfficeTab id="TabHome">
-                <Group id="CommandsGroup">
-                  <Label resid="CommandsGroup.Label"/>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Control xsi:type="Button" id="TaskpaneButton">
-                    <Label resid="TaskpaneButton.Label"/>
-                    <Supertip>
-                      <Title resid="TaskpaneButton.Label"/>
-                      <Description resid="TaskpaneButton.Tooltip"/>
-                    </Supertip>
-                    <Icon>
-                      <bt:Image size="16" resid="Icon.16x16"/>
-                      <bt:Image size="32" resid="Icon.32x32"/>
-                      <bt:Image size="80" resid="Icon.80x80"/>
-                    </Icon>
-                    <Action xsi:type="ShowTaskpane">
-                      <TaskpaneId>Office.AutoShowTaskpaneWithDocument</TaskpaneId>
-                      <SourceLocation resid="Taskpane.Url" />
-                    </Action>
-                  </Control>
-                </Group>
-              </OfficeTab>
-            </ExtensionPoint>
-            <ExtensionPoint xsi:type="LaunchEvent">
-              <LaunchEvents>
-                <LaunchEvent Type="OnDocumentOpened" FunctionName="onDocumentOpened" />
-              </LaunchEvents>
-              <!-- Point LaunchEvent at a tiny dedicated runtime (launch.html / launch.js).
-                   Pointing at Taskpane.Url loads a ~450KB bundle which is too slow for
-                   the LaunchEvent timeout on Word web — handler never gets called. -->
-              <SourceLocation resid="LaunchEvent.Url"/>
-            </ExtensionPoint>
-          </DesktopFormFactor>
-        </Host>
-      </Hosts>
-      <Resources>
-        <bt:Images>
-          <bt:Image id="Icon.16x16" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-16.png"/>
-          <bt:Image id="Icon.32x32" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-32.png"/>
-          <bt:Image id="Icon.80x80" DefaultValue="https://office.checkmarkplagiarism.com/add-in/assets/icon-80.png"/>
-        </bt:Images>
-        <bt:Urls>
-          <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-          <bt:Url id="Commands.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/commands/commands.html?v=4"/>
-          <bt:Url id="Taskpane.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/taskpane/taskpane.html?v=4"/>
-          <bt:Url id="LaunchEvent.Url" DefaultValue="https://office.checkmarkplagiarism.com/add-in/launch/launch.html?v=4"/>
-          <bt:Url id="LaunchEvent.Js"  DefaultValue="https://office.checkmarkplagiarism.com/add-in/launch/launch.js?v=4"/>
-        </bt:Urls>
-        <bt:ShortStrings>
-          <bt:String id="GetStarted.Title" DefaultValue="Start Checkmark Plagiarism before you begin writing!"/>
-          <bt:String id="CommandsGroup.Label" DefaultValue="Checkmark Plagiarism"/>
-          <bt:String id="TaskpaneButton.Label" DefaultValue="Checkmark Plagiarism"/>
-        </bt:ShortStrings>
-        <bt:LongStrings>
-          <bt:String id="GetStarted.Description" DefaultValue="Your add-in loaded successfully. Go to the HOME tab and click the 'Show Task Pane' button to get started."/>
-          <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
-        </bt:LongStrings>
-      </Resources>
-    </VersionOverrides>
   </VersionOverrides>
 </OfficeApp>
