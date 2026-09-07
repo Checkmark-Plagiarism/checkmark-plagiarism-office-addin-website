@@ -110,5 +110,11 @@
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
       </bt:LongStrings>
     </Resources>
+    <EquivalentAddins>
+      <EquivalentAddin>
+        <ProgId>CheckmarkPlagairism Word VSTO Add In</ProgId>
+        <Type>COM</Type>
+      </EquivalentAddin>
+    </EquivalentAddins>
   </VersionOverrides>
 </OfficeApp>
