@@ -6,7 +6,7 @@
        Word web confirmed in tenant testing with Plagiarism V1 (Id 8c0e425b)
        on May 6 2026 — taskpane auto-opens on doc open with metrics live. -->
   <Id>410c6ad1-80fb-47ad-888e-7bb2c98b7f35</Id>
-  <Version>1.0.0.11</Version>
+  <Version>1.0.0.13</Version>
   <ProviderName>Checkmark Plagiarism</ProviderName>
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Checkmark Plagiarism"/>
