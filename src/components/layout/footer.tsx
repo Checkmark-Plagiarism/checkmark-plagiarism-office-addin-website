@@ -28,22 +28,32 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Teacher Support
+                <a href="/downloads/checkmark_plagiarism_addin.msi" download="checkmark_plagiarism_addin.msi" className="text-cyan-300 font-medium hover:underline transition-colors">
+                  Download Windows Installer (.msi)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Student Support
+                <a
+                  href="https://marketplace.microsoft.com/en-us/product/WA200009581"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-cyan-300 font-medium hover:underline transition-colors"
+                >
+                  Word Online Add-in (Marketplace)
                 </a>
               </li>
               <li>
-                <a href="#" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
+                <Link href="/support-document" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
+                  Support Guide
+                </Link>
+              </li>
+              <li>
+                <a href="#how-it-works" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
                   Installation Guide
                 </a>
               </li>
               <li>
-                <a href="#" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
+                <a href="#features" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
                   System Requirements
                 </a>
               </li>

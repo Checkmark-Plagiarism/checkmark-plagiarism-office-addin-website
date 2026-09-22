@@ -3,42 +3,42 @@ import {
   FileText,
   Zap,
   Shield,
-  Users,
+  Laptop,
   BarChart3,
-  Clock
+  Lock
 } from "lucide-react";
 
 const Features = () => {
   const features = [
     {
+      icon: <Laptop className="w-8 h-8 text-primary" />,
+      title: "Windows Word Installer (.msi)",
+      description: "One-click MSI installer designed specifically for Microsoft Word on Windows. Fast and effortless deployment for teachers and lab workstations."
+    },
+    {
       icon: <FileText className="w-8 h-8 text-primary" />,
-      title: "Native Word Integration",
-      description: "Works seamlessly within Microsoft Word - no need to switch between applications or copy-paste text."
+      title: "Native Word Ribbon Integration",
+      description: "Embeds seamlessly into the Word ribbon. Students write naturally while educators analyze authenticity without leaving Microsoft Word."
     },
     {
       icon: <Zap className="w-8 h-8 text-primary" />,
-      title: "Real-time Detection",
-      description: "Analyze typing behavior and revision history in real-time as students work on their assignments."
+      title: "Real-time Typing & WPM Detection",
+      description: "Analyzes typing cadence, words-per-minute bursts, and live revision history as assignments are written."
     },
     {
       icon: <Shield className="w-8 h-8 text-primary" />,
       title: "Teacher-Designed Algorithm",
-      description: "Built by educators who understand how to spot plagiarism through natural writing patterns and behaviors."
+      description: "Built by educators who understand how to spot plagiarism and AI text through authentic writing behavior and revision trails."
     },
     {
-      icon: <Users className="w-8 h-8 text-primary" />,
-      title: "Classroom Ready",
-      description: "Designed specifically for educational environments with batch processing and class management features."
+      icon: <Lock className="w-8 h-8 text-primary" />,
+      title: "Private In-Document Storage",
+      description: "Session data and revision metrics are stored safely right inside the document — never exported to external servers."
     },
     {
       icon: <BarChart3 className="w-8 h-8 text-primary" />,
-      title: "Detailed Reports",
-      description: "Get comprehensive analysis reports showing authenticity scores and flagged sections for easy review."
-    },
-    {
-      icon: <Clock className="w-8 h-8 text-primary" />,
-      title: "Time-Saving",
-      description: "Automated detection frees up your time to focus on teaching and providing meaningful feedback."
+      title: "Instant Authenticity Reports",
+      description: "Get comprehensive analysis reports with authenticity scores, word counts, and revision timelines directly in the task pane."
     }
   ];
 

@@ -62,6 +62,45 @@ export default function Support() {
             </Typography>
           </Box>
 
+          {/* Installation Section */}
+          <Box mt={4}>
+            <Typography variant="h5" component="h2" gutterBottom>
+              Installation
+            </Typography>
+            
+            <Typography variant="h6" component="h3" sx={{ mt: 2, mb: 1, fontSize: "1.1rem", fontWeight: 600 }}>
+              Windows (Desktop Word)
+            </Typography>
+            <Typography variant="body1" paragraph>
+              For Microsoft Word on Windows (including Word 2016, 2019, 2021, and Office 365), install using our dedicated Windows installer:
+            </Typography>
+            <Typography variant="body1" paragraph>
+              1. Download the <a href="/downloads/checkmark_plagiarism_addin.msi" download="checkmark_plagiarism_addin.msi" style={{ color: "#1976d2", fontWeight: 600, textDecoration: "underline" }}>checkmark_plagiarism_addin.msi installer</a>.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              2. Double-click the downloaded MSI file and complete the setup wizard.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              3. Launch Microsoft Word. The Checkmark Plagiarism add-in will automatically appear in your Word ribbon.
+            </Typography>
+
+            <Typography variant="h6" component="h3" sx={{ mt: 3, mb: 1, fontSize: "1.1rem", fontWeight: 600 }}>
+              macOS, Word Online & Office 365
+            </Typography>
+            <Typography variant="body1" paragraph>
+              macOS users, as well as Word Online and Office 365 users, should install the official Word Add-in from the Microsoft Marketplace:
+            </Typography>
+            <Typography variant="body1" paragraph>
+              1. Open the <a href="https://marketplace.microsoft.com/en-us/product/WA200009581" target="_blank" rel="noopener noreferrer" style={{ color: "#1976d2", fontWeight: 600, textDecoration: "underline" }}>Checkmark Plagiarism Microsoft Marketplace listing</a>.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              2. Click <strong>Get It Now</strong> and sign in with your Microsoft 365 account.
+            </Typography>
+            <Typography variant="body1" paragraph>
+              3. Open Microsoft Word on macOS, in your browser, or via Office 365, and the Checkmark Plagiarism add-in will be available in your add-ins ribbon.
+            </Typography>
+          </Box>
+
           {/* Help Section */}
           <Box mt={4}>
             <Typography variant="h5" component="h2" gutterBottom>

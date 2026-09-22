@@ -1,29 +1,31 @@
+import { Button } from "@/components/common/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/ui/card";
+import { Download, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
-const addonInterface = "/images/interface_02.jpg";
+const addonInterface = "/images/interface_02.png";
 
 const HowItWorks = () => {
   const steps = [
     {
       number: "01",
-      title: "Install the Add-in",
-      description: "Download and install the Checkmark Plagiarism add-in directly from the Microsoft AppSource or Office Add-ins store."
+      title: "Choose Your Platform",
+      description: "For Windows Word, download and run our dedicated checkmark_plagiarism_addin.msi installer. For macOS and Word Online, install the official Word Add-in directly from the Microsoft Marketplace."
     },
     {
       number: "02",
-      title: "Open in Word",
-      description: "The add-in appears in your Word ribbon. Students work normally while the tool monitors typing patterns in the background."
+      title: "Open Microsoft Word",
+      description: "The add-in appears directly in your Word ribbon. Students work normally while typing patterns, WPM, and revisions are monitored in real time."
     },
     {
       number: "03",
       title: "Automatic Analysis",
-      description: "Our algorithm analyzes revision history, typing speed, and writing patterns to detect potential plagiarism automatically."
+      description: "Our educator-designed algorithm tracks typing speed, sudden bulk insertions, and revision history to detect potential plagiarism automatically."
     },
     {
       number: "04",
-      title: "Review Results",
-      description: "Get instant reports highlighting suspicious sections and authenticity scores to guide your review process."
+      title: "Review Results in Word",
+      description: "Get instant authenticity scores and flagged sections inside the Word task pane to guide fair, informed grading."
     }
   ];
 
@@ -36,7 +38,7 @@ const HowItWorks = () => {
           </h2>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Teachers can often tell when writing has been copied by looking at revision history.
-            Our add-in automates this process with sophisticated analysis.
+            Our add-in automates this process with sophisticated analysis right inside Windows Word.
           </p>
         </div>
 
@@ -59,23 +61,44 @@ const HowItWorks = () => {
                 </div>
               ))}
             </div>
+
+            <div className="mt-8 pt-4 flex flex-col sm:flex-row gap-3">
+              <Button variant="default" size="lg" className="group" asChild>
+                <a href="/downloads/checkmark_plagiarism_addin.msi" download="checkmark_plagiarism_addin.msi">
+                  <Download className="w-5 h-5 group-hover:animate-bounce" />
+                  Download Windows Installer (.msi)
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a
+                  href="https://marketplace.microsoft.com/en-us/product/WA200009581"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <ExternalLink className="w-4 h-4" />
+                  Word Online Add-in
+                </a>
+              </Button>
+            </div>
           </div>
 
-          <div className="relative">
-            <Card className="w-fit overflow-hidden shadow-elegant">
+          <div className="relative flex justify-center">
+            <Card className="w-fit overflow-hidden shadow-elegant border border-slate-200">
               <CardHeader className="bg-primary text-primary-foreground">
                 <CardTitle>Checkmark Add-in Interface</CardTitle>
                 <CardDescription className="text-primary-foreground/80">
                   Seamlessly integrated into Microsoft Word
                 </CardDescription>
               </CardHeader>
-              <CardContent className="p-0">
+              <CardContent className="p-0 bg-slate-50 flex justify-center">
                 <Image
                   src={addonInterface}
                   alt="Checkmark Plagiarism Add-in Interface in Microsoft Word"
-                  className="w-fit h-auto mx-auto"
-                  height={"150"}
-                  width={"150"}
+                  className="w-auto h-auto max-w-[326px]"
+                  width={326}
+                  height={738}
+                  quality={100}
+                  unoptimized
                 />
               </CardContent>
             </Card>

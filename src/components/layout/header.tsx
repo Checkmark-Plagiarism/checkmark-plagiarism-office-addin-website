@@ -1,11 +1,11 @@
 import { Button } from "@/components/common/ui/button";
-import { CheckCircle2 } from "lucide-react";
+import { Download } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 const Header = () => {
   return (
-    <header className="bg-white shadow-soft">
+    <header className="bg-white shadow-soft sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center space-x-3">
@@ -32,8 +32,11 @@ const Header = () => {
             <Link href="/support-document" className="text-muted-foreground hover:text-primary transition-colors">
               Support
             </Link>
-            <Button variant="cta" size="sm">
-              Get Add-in
+            <Button variant="cta" size="sm" asChild>
+              <a href="/downloads/checkmark_plagiarism_addin.msi" download="checkmark_plagiarism_addin.msi">
+                <Download className="w-4 h-4" />
+                Download (.msi)
+              </a>
             </Button>
           </nav>
         </div>

@@ -4,7 +4,6 @@ import Hero from "@/components/sections/homepage/hero";
 import CallToAction from "@/components/sections/homepage/call-to-action";
 import Features from "@/components/sections/homepage/features";
 import HowItWorks from "@/components/sections/homepage/how-it-works";
-import Image from "next/image";
 
 export default function Home() {
   return (
