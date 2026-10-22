@@ -57,7 +57,7 @@ export default function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
           <div className="sm:col-span-2">
             <div className="mb-4">
-              <Logo light size={40} />
+              <Logo variant="footer" />
             </div>
             <p className="text-white/70 max-w-xs">
               Checkmark Plagiarism inside Microsoft Word: writing-process analysis for teachers, where students already
