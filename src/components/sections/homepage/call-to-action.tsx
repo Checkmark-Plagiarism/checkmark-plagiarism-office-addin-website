@@ -1,51 +1,41 @@
+import Link from "next/link";
+import { BookOpen, ExternalLink, Mail } from "lucide-react";
 import { Button } from "@/components/common/ui/button";
-import { Card, CardContent } from "@/components/common/ui/card";
-import { Download, ExternalLink, HelpCircle } from "lucide-react";
+import { SkySection } from "@/components/sky/sky-hero";
+import { SUPPORT_CENTER_HREF, SUPPORT_EMAIL } from "@/lib/links";
 
-const CallToAction = () => {
+export default function CallToAction() {
   return (
-    <section className="py-20 bg-gradient-hero">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Card className="bg-white/95 backdrop-blur-sm shadow-elegant border-0">
-          <CardContent className="p-12 text-center">
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
-              Ready to Bring Plagiarism Detection to Microsoft Word?
-            </h2>
-            
-            <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Download our dedicated installer for <strong>Windows</strong> (.msi), or get the Word Add-in
-              from Microsoft Marketplace for <strong>macOS</strong>, <strong>Word Online</strong>, and <strong>Office 365</strong>.
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-8">
-              <Button variant="cta" size="xl" className="group" asChild>
-                <a href="/downloads/checkmark_plagiarism_addin.msi" download="checkmark_plagiarism_addin.msi">
-                  <Download className="w-5 h-5 group-hover:animate-bounce" />
-                  Download for Windows (.msi)
-                </a>
-              </Button>
-              
-              <Button variant="outline" size="xl" asChild>
-                <a href="https://marketplace.microsoft.com/en-us/product/WA200009581" target="_blank" rel="noopener noreferrer">
-                  <ExternalLink className="w-4 h-4" />
-                  Word Online Add-in
-                </a>
-              </Button>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center text-sm text-muted-foreground">
-              <div className="flex items-center space-x-2">
-                <HelpCircle className="w-4 h-4" />
-                <a href="/support-document" className="hover:underline">Need help? View Support Guide</a>
-              </div>
-              <div className="hidden sm:block text-muted-foreground/50">•</div>
-              <div>Windows via .msi • macOS & Word Online via Microsoft Marketplace • Office 365</div>
-            </div>
-          </CardContent>
-        </Card>
+    <section className="pb-24">
+      <div className="container mx-auto px-4">
+        <SkySection as="div" seed="office-help" className="mx-auto max-w-6xl rounded-3xl px-6 pt-16 pb-24 text-center shadow-strong">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-white text-balance">Need a hand?</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/80 text-pretty">
+            The add-in support guide covers installing and using it. For everything else Checkmark, the Support Center has
+            guides for admins, teachers and students.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4 max-sm:flex-col max-sm:items-stretch">
+            <Button asChild variant="hero">
+              <Link href="/support-document">
+                <BookOpen aria-hidden="true" />
+                Add-in Support Guide
+              </Link>
+            </Button>
+            <Button asChild variant="outline-white">
+              <a href={SUPPORT_CENTER_HREF}>
+                <ExternalLink aria-hidden="true" />
+                Checkmark Support Center
+              </a>
+            </Button>
+            <Button asChild variant="outline-white">
+              <a href={`mailto:${SUPPORT_EMAIL}`}>
+                <Mail aria-hidden="true" />
+                Email Support
+              </a>
+            </Button>
+          </div>
+        </SkySection>
       </div>
     </section>
   );
-};
-
-export default CallToAction;
+}

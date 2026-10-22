@@ -1,112 +1,59 @@
-import { Button } from "@/components/common/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/ui/card";
-import { Download, ExternalLink } from "lucide-react";
 import Image from "next/image";
 
-const addonInterface = "/images/interface_02.png";
+const STEPS = [
+  {
+    title: "Install the add-in",
+    body: "The .msi on Windows desktop Word, or Microsoft Marketplace on Mac, Word on the web and Microsoft 365.",
+  },
+  {
+    title: "Students write in Word",
+    body: "Nothing changes for them. While they write, the add-in records typing pace, pastes and revisions in the document.",
+  },
+  {
+    title: "Open the Checkmark panel",
+    body: "Open the document, click Checkmark Plagiarism in the ribbon, and the panel reads the record saved in it.",
+  },
+  {
+    title: "Review and decide",
+    body: "Counts, flagged pastes and the revision timeline, next to the writing, to guide a fair conversation and grade.",
+  },
+];
 
-const HowItWorks = () => {
-  const steps = [
-    {
-      number: "01",
-      title: "Choose Your Platform",
-      description: "For Windows Word, download and run our dedicated checkmark_plagiarism_addin.msi installer. For macOS and Word Online, install the official Word Add-in directly from the Microsoft Marketplace."
-    },
-    {
-      number: "02",
-      title: "Open Microsoft Word",
-      description: "The add-in appears directly in your Word ribbon. Students work normally while typing patterns, WPM, and revisions are monitored in real time."
-    },
-    {
-      number: "03",
-      title: "Automatic Analysis",
-      description: "Our educator-designed algorithm tracks typing speed, sudden bulk insertions, and revision history to detect potential plagiarism automatically."
-    },
-    {
-      number: "04",
-      title: "Review Results in Word",
-      description: "Get instant authenticity scores and flagged sections inside the Word task pane to guide fair, informed grading."
-    }
-  ];
-
+export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-20 bg-secondary/30 w-full">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            How It Works
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Teachers can often tell when writing has been copied by looking at revision history.
-            Our add-in automates this process with sophisticated analysis right inside Windows Word.
-          </p>
-        </div>
-
-        <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center mx-auto max-w-3xl">
-          <div className="mb-12 lg:mb-0">
-            <div className="space-y-8">
-              {steps.map((step, index) => (
-                <div key={index} className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-lg">
-                    {step.number}
-                  </div>
+    <section id="how-it-works" className="scroll-mt-24 py-20">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto grid max-w-5xl items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-wider text-brand-600">How it works</p>
+            <h2 className="mt-2 text-3xl md:text-4xl font-bold text-foreground text-balance">Four steps, all in Word</h2>
+            <ol className="mt-10 space-y-8">
+              {STEPS.map((s, i) => (
+                <li key={s.title} className="flex gap-4">
+                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-brand-500 font-bold text-white shadow-soft">
+                    {i + 1}
+                  </span>
                   <div>
-                    <h3 className="text-xl font-semibold text-foreground mb-2">
-                      {step.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {step.description}
-                    </p>
+                    <h3 className="text-lg font-bold text-foreground">{s.title}</h3>
+                    <p className="mt-1 leading-relaxed text-muted-foreground">{s.body}</p>
                   </div>
-                </div>
+                </li>
               ))}
-            </div>
-
-            <div className="mt-8 pt-4 flex flex-col sm:flex-row gap-3">
-              <Button variant="default" size="lg" className="group" asChild>
-                <a href="/downloads/checkmark_plagiarism_addin.msi" download="checkmark_plagiarism_addin.msi">
-                  <Download className="w-5 h-5 group-hover:animate-bounce" />
-                  Download Windows Installer (.msi)
-                </a>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a
-                  href="https://marketplace.microsoft.com/en-us/product/WA200009581"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <ExternalLink className="w-4 h-4" />
-                  Word Online Add-in
-                </a>
-              </Button>
-            </div>
+            </ol>
           </div>
-
-          <div className="relative flex justify-center">
-            <Card className="w-fit overflow-hidden shadow-elegant border border-slate-200">
-              <CardHeader className="bg-primary text-primary-foreground">
-                <CardTitle>Checkmark Add-in Interface</CardTitle>
-                <CardDescription className="text-primary-foreground/80">
-                  Seamlessly integrated into Microsoft Word
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0 bg-slate-50 flex justify-center">
-                <Image
-                  src={addonInterface}
-                  alt="Checkmark Plagiarism Add-in Interface in Microsoft Word"
-                  className="w-auto h-auto max-w-[326px]"
-                  width={326}
-                  height={738}
-                  quality={100}
-                  unoptimized
-                />
-              </CardContent>
-            </Card>
+          <div className="mx-auto w-full max-w-[326px] overflow-hidden rounded-2xl border bg-white shadow-strong">
+            <div className="border-b bg-brand-900 px-5 py-3 text-sm font-semibold text-white">Checkmark Plagiarism panel</div>
+            <Image
+              src="/images/interface_02.png"
+              alt="The Checkmark Plagiarism task pane in Word, showing word, character and paragraph counts"
+              width={326}
+              height={738}
+              className="h-auto w-full"
+              unoptimized
+            />
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default HowItWorks;
+}

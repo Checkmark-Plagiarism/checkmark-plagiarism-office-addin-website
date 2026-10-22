@@ -1,24 +1,27 @@
+import type { Metadata } from "next";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
-import Hero from "@/components/sections/homepage/hero";
-import CallToAction from "@/components/sections/homepage/call-to-action";
-import Features from "@/components/sections/homepage/features";
-import HowItWorks from "@/components/sections/homepage/how-it-works";
-import Image from "next/image";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Privacy Policy - Checkmark Plagiarism for Microsoft Word",
+  description: "How Checkmark Plagiarism handles personal information in the Microsoft Office add-in and its service.",
+};
+
+export default function PrivacyPolicy() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="mx-auto max-w-3xl px-6 py-10 text-slate-900">
-        <header className="mb-8">
-          <h1 className="text-3xl font-extrabold tracking-tight">
+      <main className="flex-1 px-4 pt-32 pb-24">
+        <article className="mx-auto max-w-3xl rounded-2xl border bg-white p-6 shadow-soft md:p-12 text-foreground/90 leading-relaxed [&_h2]:text-foreground [&_a]:text-brand-600">
+        <header className="mb-10 border-b pb-8">
+          <p className="text-xs font-bold uppercase tracking-wider text-brand-600">Microsoft Word Add-in</p>
+          <h1 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight text-foreground">
             Checkmark Plagiarism – Privacy Policy
           </h1>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-muted-foreground">
             Effective date: <span className="font-medium">2025-08-18</span>
           </p>
-          <p className="mt-2 text-slate-700">
+          <p className="mt-2 text-foreground/80">
             This Privacy Policy explains how <span className="font-semibold">Checkmark Plagiarism Inc</span>{" "}
             (“we,” “us,” or “our”) handles personal information when you use the{" "}
             <span className="font-semibold">Checkmark Plagiarism</span> Microsoft Office Add‑in and
@@ -216,7 +219,7 @@ export default function Home() {
             <p className="mt-2">
               The add‑in runs inside Microsoft Office host applications. Use of Microsoft software and
               APIs is subject to Microsoft’s terms. <span className="font-semibold">Checkmark Plagiarism</span>{" "}
-              is developed and operated by <span className="font-semibold">[Your Company]</span> and
+              is developed and operated by <span className="font-semibold">Checkmark Plagiarism Inc.</span> and
               is not owned by or affiliated with Microsoft.
             </p>
           </section>
@@ -254,8 +257,8 @@ export default function Home() {
               131 Continental Dr Suite 305 <br />
               Newark, DE 19713<br />
               <a
-                href="mailto:contact@email.com"
-                className="font-medium text-blue-700 underline underline-offset-2"
+                href="mailto:support@checkmarkplagiarism.com"
+                className="font-medium text-brand-600 underline underline-offset-2"
               >
                 support@checkmarkplagiarism.com
               </a>
@@ -263,6 +266,7 @@ export default function Home() {
           </section>
 
         </section>
+        </article>
       </main>
       <Footer />
     </div>

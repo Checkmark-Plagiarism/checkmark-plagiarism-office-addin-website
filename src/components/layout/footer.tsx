@@ -1,94 +1,97 @@
-import { CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import Logo from "@/components/layout/logo";
+import FooterBubbles from "@/components/layout/footer-bubbles";
+import {
+  CONTACT_HREF,
+  MAIN_SITE,
+  MARKETPLACE_HREF,
+  MSI_FILENAME,
+  MSI_HREF,
+  SUPPORT_CENTER_HREF,
+  SUPPORT_EMAIL,
+  TERMS_HREF,
+} from "@/lib/links";
 
-const Footer = () => {
+type FooterLink = { href: string; label: string; download?: string };
+
+const COLUMNS: { title: string; links: FooterLink[] }[] = [
+  {
+    title: "Word Add-in",
+    links: [
+      { href: MSI_HREF, label: "Windows Installer (.msi)", download: MSI_FILENAME },
+      { href: MARKETPLACE_HREF, label: "Microsoft Marketplace" },
+      { href: "/#install", label: "Installation" },
+      { href: "/#district-it", label: "District IT Deployment" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { href: "/support-document", label: "Add-in Support Guide" },
+      { href: SUPPORT_CENTER_HREF, label: "Support Center" },
+      { href: CONTACT_HREF, label: "Contact" },
+      { href: `mailto:${SUPPORT_EMAIL}`, label: "Email Support" },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { href: MAIN_SITE, label: "checkmarkplagiarism.com" },
+      { href: "/privacy-policy", label: "Add-in Privacy Policy" },
+      { href: TERMS_HREF, label: "Terms of Service" },
+    ],
+  },
+];
+
+/** The public website's inner-page footer, with this site's links. */
+export default function Footer() {
   return (
-    <footer className="bg-hero-bg text-hero-fg py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-4 gap-8">
-          <div className="md:col-span-2">
-            <div className="flex items-center space-x-3 mb-4">
-              <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                <CheckCircle2 className="w-5 h-5 text-primary-foreground" />
-              </div>
-              <span className="text-xl font-semibold">
-                Checkmark Plagiarism
-              </span>
+    <footer className="relative overflow-hidden bg-brand-900 text-white pt-20 pb-10">
+      {/* A short fade from the page into the footer through a light blue, instead of a hard edge. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-background via-brand-300 via-40% to-brand-900"
+      />
+      <FooterBubbles />
+      <div className="relative container mx-auto px-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+          <div className="sm:col-span-2">
+            <div className="mb-4">
+              <Logo light size={40} />
             </div>
-            <p className="text-hero-fg/80 mb-4 max-w-md">
-              Plagiarism detection designed by teachers, for teachers.
-              Bringing advanced academic integrity tools directly to Microsoft Office.
-            </p>
-            <p className="text-sm text-hero-fg/60">
-              © 2025 Checkmark Plagiarism. All rights reserved.
+            <p className="text-white/70 max-w-xs">
+              Checkmark Plagiarism inside Microsoft Word: writing-process analysis for teachers, where students already
+              write.
             </p>
           </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Resources</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <a href="/downloads/checkmark_plagiarism_addin.msi" download="checkmark_plagiarism_addin.msi" className="text-cyan-300 font-medium hover:underline transition-colors">
-                  Download Windows Installer (.msi)
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://marketplace.microsoft.com/en-us/product/WA200009581"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-cyan-300 font-medium hover:underline transition-colors"
-                >
-                  Word Online Add-in (Marketplace)
-                </a>
-              </li>
-              <li>
-                <Link href="/support-document" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Support Guide
-                </Link>
-              </li>
-              <li>
-                <a href="#how-it-works" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Installation Guide
-                </a>
-              </li>
-              <li>
-                <a href="#features" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  System Requirements
-                </a>
-              </li>
-            </ul>
-          </div>
+          {COLUMNS.map((col) => (
+            <div key={col.title}>
+              <h4 className="font-bold text-white mb-4">{col.title}</h4>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.href}>
+                    {link.href.startsWith("/") && !link.download ? (
+                      <Link href={link.href} className="text-white/70 hover:text-white transition-smooth">
+                        {link.label}
+                      </Link>
+                    ) : (
+                      <a href={link.href} download={link.download} className="text-white/70 hover:text-white transition-smooth">
+                        {link.label}
+                      </a>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
 
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="https://www.checkmarkplagiarism.com" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Main Website
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <a href="#" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Terms of Service
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-hero-fg/80 hover:text-hero-fg transition-colors">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-          </div>
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-white/60 text-sm">© {new Date().getFullYear()} Checkmark Plagiarism. All rights reserved.</p>
+          <p className="text-white/60 text-sm">Built with transparency and trust for education</p>
         </div>
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
