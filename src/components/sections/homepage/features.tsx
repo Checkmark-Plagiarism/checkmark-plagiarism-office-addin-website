@@ -26,7 +26,7 @@ const FEATURES = [
   {
     icon: Save,
     title: "Saved with the document",
-    body: "The writing record is kept inside the document itself. Close the panel and keep working; nothing is lost.",
+    body: "The writing record is kept inside the document itself, so you can close the panel and keep working.",
   },
   {
     icon: FileText,

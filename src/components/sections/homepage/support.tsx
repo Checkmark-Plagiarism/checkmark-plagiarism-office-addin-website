@@ -11,8 +11,9 @@ const QUESTIONS = [
     question: "Where is the add-in in Word?",
     answer: (
       <>
-        On the <strong>Home</strong> tab, in the Checkmark Plagiarism group. Click <strong>Checkmark Plagiarism</strong>{" "}
-        to open the panel beside your document. It can also open on its own when you open a document.
+        Look for <strong>Checkmark Plagiarism</strong> in the Word ribbon and click it to open the panel beside your
+        document. If you installed from Microsoft Marketplace, it is on the <strong>Home</strong> tab, in the Checkmark
+        Plagiarism group.
       </>
     ),
   },
