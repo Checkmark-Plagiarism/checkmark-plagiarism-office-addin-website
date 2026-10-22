@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import Header from "@/components/layout/header";
+import Link from "next/link";
+import Logo from "@/components/layout/logo";
 import Footer from "@/components/layout/footer";
 
 export const metadata: Metadata = {
@@ -10,8 +11,12 @@ export const metadata: Metadata = {
 export default function PrivacyPolicy() {
   return (
     <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1 px-4 pt-32 pb-24">
+      <header className="container mx-auto px-6 pt-6">
+        <Link href="/" aria-label="Checkmark Plagiarism for Word, home" className="inline-block">
+          <Logo size="sm" />
+        </Link>
+      </header>
+      <main className="flex-1 px-4 pt-10 pb-24">
         <article className="mx-auto max-w-3xl rounded-2xl border bg-white p-6 shadow-soft md:p-12 text-foreground/90 leading-relaxed [&_h2]:text-foreground [&_a]:text-brand-600">
         <header className="mb-10 border-b pb-8">
           <p className="text-xs font-bold uppercase tracking-wider text-brand-600">Microsoft Word Add-in</p>

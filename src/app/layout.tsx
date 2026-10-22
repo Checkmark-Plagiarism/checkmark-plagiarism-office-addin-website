@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Checkmark Plagiarism for Microsoft Word",
   description:
-    "Install the Checkmark Plagiarism add-in for Microsoft Word: the Windows installer (.msi) for desktop Word, or the Microsoft Marketplace listing for Mac, Word on the web and Microsoft 365.",
+    "Install the Checkmark Plagiarism add-in for Microsoft Word: the Windows installer (.msi) for desktop Word, or the Microsoft Marketplace listing for Mac, Word on the web and Microsoft 365. Features and support included.",
 };
 
 export default function RootLayout({

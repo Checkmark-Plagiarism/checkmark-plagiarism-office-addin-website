@@ -1,12 +1,8 @@
+import Image from "next/image";
 import { BarChart3, ClipboardPaste, FileText, Gauge, History, Save } from "lucide-react";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/common/ui/card";
 
 const FEATURES = [
-  {
-    icon: FileText,
-    title: "Right in the Word ribbon",
-    body: "Students write in Word as usual. Teachers open the Checkmark panel in the same document, without switching apps.",
-  },
   {
     icon: Gauge,
     title: "Typing pace",
@@ -23,25 +19,30 @@ const FEATURES = [
     body: "A timeline of how the writing grew and changed, the record teachers otherwise piece together by hand.",
   },
   {
+    icon: BarChart3,
+    title: "Counts and readability",
+    body: "Words, characters, paragraphs, spoken length, editing time and a readability score, live in the panel next to the writing.",
+  },
+  {
     icon: Save,
     title: "Saved with the document",
     body: "The writing record is kept inside the document itself. Close the panel and keep working; nothing is lost.",
   },
   {
-    icon: BarChart3,
-    title: "Results in the panel",
-    body: "Word, sentence and paragraph counts and an authenticity summary, shown in the task pane next to the writing.",
+    icon: FileText,
+    title: "Reports for teachers",
+    body: "The add-in powers the Checkmark Plagiarism report, so teachers can review how the work was written.",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="scroll-mt-24 border-y bg-white py-20">
+    <section id="features" aria-labelledby="features-title" className="scroll-mt-6 border-y bg-white py-20">
       <div className="container mx-auto px-4">
-        <div className="mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl">
           <div className="mx-auto mb-12 max-w-3xl text-center">
             <p className="text-xs font-bold uppercase tracking-wider text-brand-600">Features</p>
-            <h2 className="mt-2 text-3xl md:text-4xl font-bold text-foreground text-balance">
+            <h2 id="features-title" className="mt-2 text-3xl font-bold text-foreground text-balance md:text-4xl">
               The writing process, where students already write
             </h2>
             <p className="mt-4 text-lg text-muted-foreground text-pretty">
@@ -49,19 +50,48 @@ export default function Features() {
               student writes.
             </p>
           </div>
+
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {FEATURES.map(({ icon: Icon, title, body }) => (
-              <Card key={title} className="bg-white shadow-soft transition-smooth hover:-translate-y-0.5 hover:shadow-medium">
+              <Card key={title} className="bg-white shadow-soft">
                 <CardHeader>
                   <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-brand-500">
                     <Icon className="h-5 w-5 text-white" aria-hidden="true" />
                   </div>
-                  <CardTitle className="text-xl">{title}</CardTitle>
+                  <CardTitle className="text-xl leading-tight">{title}</CardTitle>
                   <CardDescription className="text-base leading-relaxed">{body}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
           </div>
+
+          <figure className="mt-14">
+            {/* A phone-width crop of the panel on small screens, the full Word window from md up.
+                The one that is display:none never loads (both are lazy). */}
+            <div className="mx-auto w-full max-w-[326px] overflow-hidden rounded-2xl border bg-white shadow-strong md:hidden">
+              <Image
+                src="/images/interface_02.png"
+                alt="The Checkmark Plagiarism panel in Word, showing word, character and paragraph counts, spoken length, editing time and readability"
+                width={326}
+                height={738}
+                className="h-auto w-full"
+                unoptimized
+              />
+            </div>
+            <div className="hidden overflow-hidden rounded-2xl border bg-white shadow-strong md:block">
+              <Image
+                src="/images/hero_02.png"
+                alt="Microsoft Word with the Checkmark Plagiarism panel open on the right, showing word, character and paragraph counts"
+                width={1024}
+                height={553}
+                className="h-auto w-full"
+                unoptimized
+              />
+            </div>
+            <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+              The Checkmark Plagiarism panel in Word.
+            </figcaption>
+          </figure>
         </div>
       </div>
     </section>
