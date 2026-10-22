@@ -1,78 +1,69 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/common/ui/card";
-import {
-  FileText,
-  Zap,
-  Shield,
-  Laptop,
-  BarChart3,
-  Lock
-} from "lucide-react";
+import { BarChart3, ClipboardPaste, FileText, Gauge, History, Save } from "lucide-react";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/components/common/ui/card";
 
-const Features = () => {
-  const features = [
-    {
-      icon: <Laptop className="w-8 h-8 text-primary" />,
-      title: "Windows Word Installer (.msi)",
-      description: "One-click MSI installer designed specifically for Microsoft Word on Windows. Fast and effortless deployment for teachers and lab workstations."
-    },
-    {
-      icon: <FileText className="w-8 h-8 text-primary" />,
-      title: "Native Word Ribbon Integration",
-      description: "Embeds seamlessly into the Word ribbon. Students write naturally while educators analyze authenticity without leaving Microsoft Word."
-    },
-    {
-      icon: <Zap className="w-8 h-8 text-primary" />,
-      title: "Real-time Typing & WPM Detection",
-      description: "Analyzes typing cadence, words-per-minute bursts, and live revision history as assignments are written."
-    },
-    {
-      icon: <Shield className="w-8 h-8 text-primary" />,
-      title: "Teacher-Designed Algorithm",
-      description: "Built by educators who understand how to spot plagiarism and AI text through authentic writing behavior and revision trails."
-    },
-    {
-      icon: <Lock className="w-8 h-8 text-primary" />,
-      title: "Private In-Document Storage",
-      description: "Session data and revision metrics are stored safely right inside the document — never exported to external servers."
-    },
-    {
-      icon: <BarChart3 className="w-8 h-8 text-primary" />,
-      title: "Instant Authenticity Reports",
-      description: "Get comprehensive analysis reports with authenticity scores, word counts, and revision timelines directly in the task pane."
-    }
-  ];
+const FEATURES = [
+  {
+    icon: FileText,
+    title: "Right in the Word ribbon",
+    body: "Students write in Word as usual. Teachers open the Checkmark panel in the same document, without switching apps.",
+  },
+  {
+    icon: Gauge,
+    title: "Typing pace",
+    body: "Words per minute over the life of the document, so bursts that don't match how a student types stand out.",
+  },
+  {
+    icon: ClipboardPaste,
+    title: "Large pastes",
+    body: "Sudden blocks of text that appear all at once are flagged, so you can ask where they came from.",
+  },
+  {
+    icon: History,
+    title: "Revision history",
+    body: "A timeline of how the writing grew and changed, the record teachers otherwise piece together by hand.",
+  },
+  {
+    icon: Save,
+    title: "Saved with the document",
+    body: "The writing record is kept inside the document itself. Close the panel and keep working; nothing is lost.",
+  },
+  {
+    icon: BarChart3,
+    title: "Results in the panel",
+    body: "Word, sentence and paragraph counts and an authenticity summary, shown in the task pane next to the writing.",
+  },
+];
 
+export default function Features() {
   return (
-    <section id="features" className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            Why Choose Our Office Add-in?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Experience the power of Checkmark&apos;s plagiarism detection directly within
-            Microsoft Word, the environment where your students are already working.
-          </p>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <Card key={index} className="shadow-card hover:shadow-elegant transition-shadow duration-300">
-              <CardHeader>
-                <div className="mb-4">{feature.icon}</div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
-          ))}
+    <section id="features" className="scroll-mt-24 border-y bg-white py-20">
+      <div className="container mx-auto px-4">
+        <div className="mx-auto max-w-6xl">
+          <div className="mx-auto mb-12 max-w-3xl text-center">
+            <p className="text-xs font-bold uppercase tracking-wider text-brand-600">Features</p>
+            <h2 className="mt-2 text-3xl md:text-4xl font-bold text-foreground text-balance">
+              The writing process, where students already write
+            </h2>
+            <p className="mt-4 text-lg text-muted-foreground text-pretty">
+              Teachers can often tell copied work from its revision history. The add-in keeps that history for you while the
+              student writes.
+            </p>
+          </div>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {FEATURES.map(({ icon: Icon, title, body }) => (
+              <Card key={title} className="bg-white shadow-soft transition-smooth hover:-translate-y-0.5 hover:shadow-medium">
+                <CardHeader>
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-lg bg-brand-500">
+                    <Icon className="h-5 w-5 text-white" aria-hidden="true" />
+                  </div>
+                  <CardTitle className="text-xl">{title}</CardTitle>
+                  <CardDescription className="text-base leading-relaxed">{body}</CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Features;
+}
