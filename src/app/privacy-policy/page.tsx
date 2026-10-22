@@ -219,7 +219,7 @@ export default function PrivacyPolicy() {
             <p className="mt-2">
               The add‑in runs inside Microsoft Office host applications. Use of Microsoft software and
               APIs is subject to Microsoft’s terms. <span className="font-semibold">Checkmark Plagiarism</span>{" "}
-              is developed and operated by <span className="font-semibold">[Your Company]</span> and
+              is developed and operated by <span className="font-semibold">Checkmark Plagiarism Inc.</span> and
               is not owned by or affiliated with Microsoft.
             </p>
           </section>
